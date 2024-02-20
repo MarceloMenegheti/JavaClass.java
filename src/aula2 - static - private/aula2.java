@@ -1,7 +1,9 @@
+
 public class aula2 {
     public static void main(String[] args){
         
         int num = 0;
+        
 
         System.out.printf("%nalerta %s",Jogador.alerta ? "sim" : "nao");
 
@@ -19,6 +21,7 @@ public class aula2 {
         j1.info();
         j2.info();
         j3.info();
+
     }
     
 }
