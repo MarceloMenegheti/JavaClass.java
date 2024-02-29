@@ -2,10 +2,10 @@ package entities;
 
 public class Product{
 
-    //atributos
-    public String name;
-    public double price;
-    public int quantity;
+    //atributos encapsulados
+    private String name;
+    private double price;
+    private int quantity;
 
     public Product(String name, double price, int quantity){
         this.name = name;
@@ -13,6 +13,29 @@ public class Product{
         this.quantity = quantity;
     }
 
+    //sobrecarga construtor
+    public Product(String name, double price){
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public double getPrice(){
+        return price;
+    }
+
+    public void setPrice(double price){
+        this.price = price;
+    }
+
+    
     //metodos
     public double totalValueInStock(){
         return price * quantity;
