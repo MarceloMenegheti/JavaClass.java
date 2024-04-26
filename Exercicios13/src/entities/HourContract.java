@@ -25,6 +25,7 @@ public class HourContract {
         this.date = date;
     }
 
+    
     public Double getValuePerHour() {
         return valuePerHour;
     }

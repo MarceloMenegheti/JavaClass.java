@@ -14,6 +14,7 @@ public class Worker {
 
     public Worker(){
     }
+    
 
     public Worker(String name, WorkerLevel level, Double baseSalary, Department department) {
         this.name = name;
