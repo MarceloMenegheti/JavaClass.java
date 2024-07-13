@@ -17,9 +17,7 @@ public class Program {
         list.add(new Product("Tablet", 450.00));
 
         //expressão lambda
-        Comparator<Product> comp = (obj1, obj2) -> {//função anonima
-            return obj1.getName().toUpperCase().compareTo(obj2.getName().toUpperCase());
-        };
+        Comparator<Product> comp = (obj1, obj2) -> obj1.getName().toUpperCase().compareTo(obj2.getName().toUpperCase());
 
         list.sort(comp);
 
