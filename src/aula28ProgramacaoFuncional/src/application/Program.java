@@ -2,9 +2,9 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Comparator;
 
 import entities.Product;
-import application.MyComparator;
 
 public class Program {
 
@@ -16,7 +16,15 @@ public class Program {
         list.add(new Product("Notebook", 1200.00));
         list.add(new Product("Tablet", 450.00));
 
-        list.sort(new MyComparator());
+        //classe anonima
+        Comparator<Product> comp = new Comparator<Product>(){
+            @Override
+            public int compare(Product obj1, Product obj2) {
+                return obj1.getName().toUpperCase().compareTo(obj2.getName().toUpperCase());
+            }
+        };
+
+        list.sort(comp);
 
         for (Product p : list) {
             System.out.println(p);
