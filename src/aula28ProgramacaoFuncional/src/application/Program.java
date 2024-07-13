@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entities.Product;
+import application.MyComparator;
 
 public class Program {
 
@@ -15,7 +16,7 @@ public class Program {
         list.add(new Product("Notebook", 1200.00));
         list.add(new Product("Tablet", 450.00));
 
-        Collections.sort(list);
+        list.sort(new MyComparator());
 
         for (Product p : list) {
             System.out.println(p);
