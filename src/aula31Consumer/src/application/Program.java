@@ -3,7 +3,7 @@ package application;
 import entities.Product;
 import util.PriceUpdate;
 
-
+import java.util.function.Consumer;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -19,7 +19,13 @@ public class Program {
         list.add(new Product("Tablet", 350.50));
         list.add(new Product("HD Case", 80.90));
 
-        list.forEach(Product::nonStaticPriceUpdate);
+        double factor = 1.1;
+
+        Consumer<Product> cons = p -> {
+            p.setPrice(p.getPrice() * factor);
+        };
+
+        list.forEach(cons);
 
         list.forEach(System.out::println);
 
