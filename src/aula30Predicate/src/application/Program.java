@@ -21,8 +21,8 @@ public class Program {
             System.out.println(p);
         }
 
-        //Reference method com método estático
-        list.removeIf(Product::staticProductPredicate);
+        //Reference method com método não estático
+        list.removeIf(Product::nonStaticProductPredicate);
 
         System.out.println("\n----\n");
         for(Product p : list){
