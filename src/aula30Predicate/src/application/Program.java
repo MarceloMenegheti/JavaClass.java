@@ -1,6 +1,8 @@
 package application;
 
 import entities.Product;
+import util.ProductPredicate;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -19,10 +21,9 @@ public class Program {
             System.out.println(p);
         }
 
-        //expressão lambda
-        list.removeIf(p -> p.getPrice()  <= 100);
+        list.removeIf(new ProductPredicate());
 
-        System.out.println("----");
+        System.out.println("\n----\n");
         for(Product p : list){
             System.out.println(p);
         }
