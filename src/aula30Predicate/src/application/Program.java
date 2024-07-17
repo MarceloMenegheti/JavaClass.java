@@ -5,6 +5,7 @@ import util.ProductPredicate;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 
 public class Program {
@@ -20,9 +21,12 @@ public class Program {
         for(Product p : list){
             System.out.println(p);
         }
+        double min = 100.0;
 
-        //Reference method com método não estático
-        list.removeIf(Product::nonStaticProductPredicate);
+        //Expressão lambda declarada
+        Predicate<Product> pred = p -> p.getPrice() >= min;
+
+        list.removeIf(pred);
 
         System.out.println("\n----\n");
         for(Product p : list){
