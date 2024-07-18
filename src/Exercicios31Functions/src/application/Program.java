@@ -21,9 +21,14 @@ public class Program {
 
         ProductServise ps = new ProductServise();
 
-        double sum = ps.filteredSum(list);
+        //funcao mais flexivel
+        double sum = ps.filteredSum(list, p -> p.getName().charAt(0) == 'M');
+
+        double sumM = ps.filteredSum(list, p -> p.getPrice() < 100.0);
 
         System.out.println("Sum = " + String.format("%.2f", sum));
+        System.out.println("Soma dos produtos menores que 100.00 = " + String.format("%.2f", sumM));
+
 
     }
 }
