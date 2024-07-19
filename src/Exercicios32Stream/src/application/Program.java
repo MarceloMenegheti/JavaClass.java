@@ -27,6 +27,22 @@ public class Program {
                 line = br.readLine();
             }
 
+            double avg = list.stream()
+                    .map(p -> p.getPrice())
+                    .reduce(0.0, (x, y) -> x + y) / list.size();
+
+            System.out.println("Average price: " + String.format("%.2f",avg));
+
+            Comparator<String> comp = (s1, s2) -> s1.toUpperCase().compareTo(s2.toUpperCase());
+
+            List<String> names = list.stream()
+                    .filter(p -> p.getPrice() < avg)
+                    .map(p -> p.getName())
+                    .sorted(comp.reversed())//comparator na ordem decrecente
+                    .collect(Collectors.toList());
+
+            //System.out.println(Arrays.toString(names.toArray()));
+            names.forEach(System.out::println);
 
 
         }catch (IOException e){
@@ -36,3 +52,12 @@ public class Program {
     }
 }
 
+        //SAIDA
+        /*
+        Enter full file path: C:/temp/inn.csv
+        Average price: 420.23
+        Tablet
+        Mouse
+        Monitor
+        HD Case
+         */
