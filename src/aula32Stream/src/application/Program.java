@@ -3,27 +3,28 @@ package application;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Program {
     public static void main(String[] args){
+
         List<Integer> list = Arrays.asList(3,4,5,10,7);
 
-        //como criar uma Stream através de uma lista
-        Stream<Integer> st1 = list.stream().map(x -> x *10);
-        System.out.println(Arrays.toString(st1.toArray()));
+        Stream<Integer> st1 = list.stream().map(x -> x * 10);//map() ação intermediária.
+        System.out.println(Arrays.toString(st1.toArray()));//toArray ação terminal.
 
-        //como criar uma Stream através do "of"
-        Stream<String> st2 = Stream.of("Marcelo","Luiz","Diego","Vini");
-        System.out.println(Arrays.toString(st2.toArray()));
 
-        //função de iteração
-        Stream<Integer> st3 = Stream.iterate(0,x -> x + 2);//x que leva a x + 2
-        System.out.println(Arrays.toString(st3.limit(10).toArray()));
+        //reduce e uma ação Terminal que pega um elemento inicial "0" e uma func dois elementos "(x,y)" que geram um resultado.
+        int sum = list.stream().reduce(0, (x,y) -> x + y);
+        System.out.println("Sum = " + sum);
 
-        //Sequencia de fibonacci
-        Stream<Long> st4 = Stream.iterate(new Long[] {0L, 1L}, p -> new Long[] {p[1], p[0] + p[1]}).map(p -> p[0]);
-        System.out.println(Arrays.toString(st4.limit(10).toArray()));
+        //pipeline maior
+        List<Integer> newList = list.stream()
+                .filter(x -> x % 2 == 0)//gerando um predicado.
+                .map(x -> x * 10)//transforma cada elemento conforme na expressao lambda.
+                .collect(Collectors.toList());//ação terminal.
 
+        System.out.println(Arrays.toString(newList.toArray()));
     }
 }
