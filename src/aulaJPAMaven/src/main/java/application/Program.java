@@ -10,9 +10,6 @@ public class Program {
 
 	public static void main(String[] args) {
 		
-		Pessoa p1 = new Pessoa(null, "Marcelo Menegheti", "marcelo@gmail.com");
-		Pessoa p2 = new Pessoa(null, "Kaku elos", "Kaku@gmail.com");
-		Pessoa p3 = new Pessoa(null, "Luiz David", "Luiz@gmail.com");
 		
 		/*	EntityManager:
 		 	Um objeto EntityManager encapsula uma conexão com a base de dados e serve
@@ -26,15 +23,19 @@ public class Program {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemplo-jpa");
 		EntityManager em = emf.createEntityManager();//com essa instanciação ja vou ter uma conecction com o DB
 		
-		//inserir no DB
-		em.getTransaction().begin();	//iniciar um transação com DB
-		em.persist(p1);		
-		em.persist(p2);					//pega o obj e salva no DB
-		em.persist(p3);
-		em.getTransaction().commit();	//finalizar transação e confirmar as alterações
+		
+		Pessoa p = em.find(Pessoa.class, 2); 	//um pessoa "recuperada" pelo metodo find()
+		System.out.println(p);
+		
+		
+		em.getTransaction().begin();
+		em.remove(p);							//apenas consigo remover pq é um "obj monitorado" 	
+		em.getTransaction().commit();
+		 
 		
 		System.out.println("Pronto!");
-
+		em.close();
+		emf.close();
 
 	}
 
